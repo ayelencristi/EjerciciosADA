@@ -109,19 +109,19 @@
 // estanJuntos(personajes)
 // Crear una función estanJuntos que tome como argumento un array de strings personajes, y devuelva true si Sam se encuentra al lado de Frodo, ya sea antes o después, o false sino. Ejemplo:
 
-const estanJuntos = (personajes) => {
-    for (let i = 0; i < personajes.length; i++) {
-        if ((personajes[i] === 'Sam' && personajes[i+1] === 'Frodo') || (personajes[i] === 'Sam' && personajes[i-1] === 'Frodo')) {
-            return true
-        }
-    }
-    return false
-}
+// const estanJuntos = (personajes) => {
+//     for (let i = 0; i < personajes.length; i++) {
+//         if ((personajes[i] === 'Sam' && personajes[i+1] === 'Frodo') || (personajes[i] === 'Sam' && personajes[i-1] === 'Frodo')) {
+//             return true
+//         }
+//     }
+//     return false
+// }
 
-console.log(estanJuntos(['Sam', 'Frodo', 'Legolas'])) //true
-console.log(estanJuntos(['Aragorn', 'Frodo', 'Frodo'])) //true
-console.log(estanJuntos(['Sam', 'Orco', 'Frodo'])) //true
-console.log(estanJuntos(['Frodo','Sam', 'Legolas']))
+// console.log(estanJuntos(['Sam', 'Frodo', 'Legolas'])) //true
+// console.log(estanJuntos(['Aragorn', 'Frodo', 'Frodo'])) //true
+// console.log(estanJuntos(['Sam', 'Orco', 'Frodo'])) //true
+// console.log(estanJuntos(['Frodo','Sam', 'Legolas']))
 
 
 
@@ -151,7 +151,7 @@ console.log(estanJuntos(['Frodo','Sam', 'Legolas']))
 
 // console.log(separar('🐶🐱🐶🐱🐱🐶🐶'));
 
-// Ejercicio 8
+// ----------------Ejercicio 8
 
 // obtenerChatStatus(usuarias)
 // Crear una función obtenerChatStatus que tome como argumento un array de strings usuarias y devuelva un string con el status del chat. Las reglas son:
@@ -161,8 +161,28 @@ console.log(estanJuntos(['Frodo','Sam', 'Legolas']))
 // Para más de dos usuarias, debe mostrar: NOMBRE_USUARIA_1, NOMBRE_USUARIA_2 y X persona(s) más están conectadas
 // Ejemplo:
 
-// obtenerChatStatus(['Ada']) // 'Ada está conectada'
-// obtenerChatStatus(['Ada', 'Grace']) // 'Ada y Grace están conectadas'
-// obtenerChatStatus(['Ada', 'Grace', 'Marie']) // 'Ada, Grace y 1 persona(s) más están conectadas'
+const obtenerChatStatus = (usuarias) => {
+    const newString1 = `${usuarias[0]} está conectada`;
+    const newString2 = `${usuarias[0]} y ${usuarias[1]} están conectadas`;
+    const newString3 = `${usuarias[0]}, ${usuarias[1]} y ${usuarias.length} persona(s) están conectadas`; //no sé cómo contar desde la que quedan
+    for (let i = 0; i < usuarias.length; i++) {
+        switch (usuarias.length) {
+            case 1:
+                return newString1;                                
+                break;
+            case 2:
+                return newString2;
+                break;        
+            default:
+                return newString3;
+                break;
+        }
+    }
+    
+}
+
+console.log(obtenerChatStatus(['Ada'])) // 'Ada está conectada'
+console.log(obtenerChatStatus(['Ada', 'Grace'])) // 'Ada y Grace están conectadas'
+console.log(obtenerChatStatus(['Ada', 'Grace', 'Marie'])) // 'Ada, Grace y 1 persona(s) más están conectadas'
 
 
